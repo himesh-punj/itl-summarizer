@@ -20,7 +20,7 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # 20MB max file size
 
 # Configuration
 class Config:
-    GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY", "groq-key-here")
     GROQ_MODEL = "llama-3.1-8b-instant"
     API_PROVIDER = "groq"
     ALLOWED_IPS = os.getenv("ALLOWED_IPS", "").split(",") if os.getenv("ALLOWED_IPS") else []

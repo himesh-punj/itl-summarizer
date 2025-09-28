@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Document Summarizer - Advanced AI Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1>⚖️ Legal Document Summarizer</h1>
+            <p class="subtitle">Advanced AI-powered legal document analysis with intelligent document type detection</p>
+            <span class="ai-badge">🤖 Powered by Groq AI</span>
+        </div>
+        
+        <div class="chat-area" id="chatArea">
+            <div class="welcome-screen">
+                <h3>📄 Intelligent Legal Document Analysis</h3>
+                <p>Upload or paste legal documents to get AI-powered structured summaries. Our advanced system automatically detects document types (court cases, contracts, property deeds, tax documents, employment agreements, IP documents, criminal cases, and regulatory policies) and provides specialized analysis with proper legal formatting.</p>
+                
+                <div class="example-prompts">
+                    <div class="example-prompt" onclick="setPrompt('Summarize focusing on payment terms and financial obligations')">💰 Payment Focus</div>
+                    <div class="example-prompt" onclick="setPrompt('Summarize highlighting key dates and deadlines')">📅 Dates & Deadlines</div>
+                    <div class="example-prompt" onclick="setPrompt('Summarize emphasizing parties and their roles')">👥 Parties & Roles</div>
+                    <div class="example-prompt" onclick="setPrompt('Summarize with focus on legal risks and compliance')">⚠️ Risk Analysis</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <div class="controls">
+                <div class="word-settings">
+                    <label>Summary length:</label>
+                    <input type="number" id="wordCount" value="500" min="100" max="2000" class="word-input">
+                    <span>words</span>
+                </div>
+                <button class="clear-button" onclick="clearChat()">🗑️ Clear Chat</button>
+            </div>
+            
+            <div class="file-preview" id="filePreview">
+                <div class="file-info">
+                    <span>📄</span>
+                    <span id="fileName"></span>
+                    <span id="fileSize"></span>
+                </div>
+                <button class="remove-file-btn" onclick="removeFile()">✕</button>
+            </div>
+            
+            <div class="input-area">
+                <button class="attach-button" onclick="triggerFileUpload()" title="Attach legal document">📎</button>
+                <textarea 
+                    id="textInput" 
+                    class="text-input" 
+                    placeholder="Paste legal document text here or attach a file for intelligent AI analysis. You can also add specific instructions like 'focus on payment terms' or 'highlight key dates'..."
+                    rows="1"
+                    oninput="autoResize()"
+                    onkeydown="handleEnterKey(event)"
+                ></textarea>
+                <button class="send-button" id="sendButton" onclick="submitMessage()" title="Generate AI summary">📤</button>
+            </div>
+            
+            <input type="file" id="fileInput" style="display: none;" accept=".pdf,.docx,.txt" onchange="handleFileSelection(event)">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
